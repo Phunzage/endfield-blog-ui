@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-black overflow-hidden select-none font-sans text-white m-0 p-0 w-screen h-screen;
+    /* background-image: url(../public/image.png); */
+  }
+}
+
+/* 屏幕扫描线动画 */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.scanline-effect::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 10px;
+  background: linear-gradient(to bottom, transparent, rgba(252, 209, 22, 0.2), transparent);
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+  z-index: 50;
+}
